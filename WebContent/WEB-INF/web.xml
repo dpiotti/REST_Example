@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>REST_Example</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+    <!--
+	<servlet>
+		<servlet-name>BasicServlet</servlet-name>
+		<servlet-class>com.loomissayles.jasper.servlet.BasicServlet</servlet-class>
+		<init-param>
+			<param-name>properties_location</param-name>
+			<param-value>/apps/home/javaadm/tss/config/restservice.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BasicServlet</servlet-name>
+		<url-pattern>/basicservlet</url-pattern>
+	</servlet-mapping>
+
+	-->
+	<servlet>
+		<servlet-name>RestExampleService</servlet-name>
+		<!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>com.ascentialdata.service.rest</param-value>
+		</init-param>
+		<!-- <init-param> <param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.loomissayles.jasper.service.rest</param-value> </init-param> -->
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RestExampleService</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- <resource-ref> <description>DB Connection</description> <res-ref-name>jdbc/scratchdb</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type> <res-auth>Container</res-auth>
+		</resource-ref> -->
+</web-app>
